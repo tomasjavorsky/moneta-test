@@ -2,7 +2,7 @@ import { Button, CircularProgress, Typography } from "@mui/joy";
 import PhoneIcon from "../Icons/Phone";
 import styles from "./priceCard.module.css";
 import { useTranslation } from "react-i18next";
-import { numberWithThousands } from "../../utils/thousandSeparator";
+import { separateThousands } from "../../utils/numberFormatting";
 
 interface PriceCardProps {
   isSuccess: boolean;
@@ -24,8 +24,7 @@ export default function PriceCard({
           {t("monthlyPayments")}
         </Typography>
         <Typography sx={{ color: "white", fontWeight: "bold" }} level="h1">
-          {isSuccess &&
-            `${numberWithThousands(monthlyPayment)} ${t("currency")}`}
+          {isSuccess && `${separateThousands(monthlyPayment)} ${t("currency")}`}
           {isPending && <CircularProgress variant="plain" />}
         </Typography>
       </div>

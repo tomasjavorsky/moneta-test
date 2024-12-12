@@ -13,7 +13,7 @@ export default function DualCheckbox({
   firstLabel,
   secondLabel,
 }: DualCheckboxProps) {
-  const { setValue, control } = useFormContext()
+  const { setValue, control } = useFormContext();
 
   return (
     <Controller
@@ -22,11 +22,13 @@ export default function DualCheckbox({
       render={({ field: { value } }) => (
         <div className={styles.inputContainer}>
           <Checkbox
+            data-testid={"checkbox-insurance-add"}
             checked={value}
             label={firstLabel}
             onChange={() => setValue(name, true)}
           />
           <Checkbox
+            data-testid={"checkbox-insurance-remove"}
             checked={!value}
             label={secondLabel}
             onChange={() => setValue(name, false)}
