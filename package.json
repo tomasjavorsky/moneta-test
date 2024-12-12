@@ -13,11 +13,14 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/inter": "^5.1.0",
+    "@hookform/resolvers": "^3.9.1",
     "@mui/joy": "^5.0.0-beta.48",
     "i18next": "^24.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-i18next": "^15.1.4"
+    "react-hook-form": "^7.54.0",
+    "react-i18next": "^15.1.4",
+    "yup": "^1.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

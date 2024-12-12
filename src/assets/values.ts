@@ -2,9 +2,9 @@
 
 export const values = {
   loan: {
-    min: 20000,
-    max: 800000,
-    minDuration: 24,
-    maxDuration: 96,
+    minAmount: 20000,
+    maxAmount: 800000,
+    minMonths: 24,
+    maxMonths: 96,
   },
 };

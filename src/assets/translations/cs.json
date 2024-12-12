@@ -7,5 +7,13 @@
   "withoutInsurance": "Bez pojištění",
   "declaimer": "Výše uvedené splátky je pouze orientační a od výsledné schválené výše splátky se může lišit.",
   "currency": "Kč",
-  "months": "měsíců"
+  "months": "měsíců",
+  "monthlyPayments": "Měsíčně zaplatíte",
+  "continue": "POKRAČOVAT",
+  "orWeCall": "nebo Vám zavoláme",
+  "validation": {
+    "min": "Minimum je {{val}} Kč",
+    "max": "Maximum je {{val}} měsíců",
+    "required": "Zadejte hodnotu"
+  }
 }

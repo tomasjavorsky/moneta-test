@@ -1,20 +1,30 @@
-import { Input } from "@mui/joy";
-import { Dispatch, SetStateAction } from "react";
+import { Input, Typography } from "@mui/joy";
 import styles from "./numberInput.module.css";
+import { useFormContext } from "react-hook-form";
 
 interface NumberInputProps {
-  value: number;
-  setter: Dispatch<SetStateAction<number>>;
+  name: string;
 }
 
-export default function NumberInput({ value, setter }: NumberInputProps) {
+export default function NumberInput({ name }: NumberInputProps) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <div className={styles.container}>
+      <div className={styles.fillSpace} />
       <Input
+        {...register(name, { valueAsNumber: true })}
+        error={!!errors[name]?.message}
         type="number"
-        value={value}
-        onChange={(e) => setter(parseInt(e.target.value))}
       />
+      <div className={styles.fillSpace}>
+        <Typography color="danger" level="body-xs">
+          {errors[name]?.message as string}
+        </Typography>
+      </div>
     </div>
   );
 }
