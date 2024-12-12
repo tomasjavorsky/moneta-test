@@ -10,8 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource/inter": "^5.1.0",
+    "@mui/joy": "^5.0.0-beta.48",
+    "i18next": "^24.0.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

@@ -1,0 +1,11 @@
+{
+  "title": "Express půjčku vám schválime do 5 minut",
+  "howMuch": "Kolik si chcete půjčit",
+  "howLong": "Na jak dlouho",
+  "insolvencyInsurance": "Pojištění proti necschopnosti půjčku splácet",
+  "withInsurance": "S pojištěním",
+  "withoutInsurance": "Bez pojištění",
+  "declaimer": "Výše uvedené splátky je pouze orientační a od výsledné schválené výše splátky se může lišit.",
+  "currency": "Kč",
+  "months": "měsíců"
+}
