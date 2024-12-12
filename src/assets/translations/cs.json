@@ -11,6 +11,12 @@
   "monthlyPayments": "Měsíčně zaplatíte",
   "continue": "POKRAČOVAT",
   "orWeCall": "nebo Vám zavoláme",
+  "interestRate": "Úroková sazba",
+  "RPSNfrom": "RPSN od",
+  "insurance": "pojištění",
+  "monthly": "/měsíčně",
+  "onlineProcessingFee": "poplatek za sjednání online",
+  "totalPayment": "celkem zaplatíte",
   "validation": {
     "min": "Minimum je {{val}} Kč",
     "max": "Maximum je {{val}} měsíců",

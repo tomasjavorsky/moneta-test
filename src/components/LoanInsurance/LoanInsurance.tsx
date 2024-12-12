@@ -13,7 +13,7 @@ export default function DualCheckbox({
   firstLabel,
   secondLabel,
 }: DualCheckboxProps) {
-  const { setValue, control } = useFormContext();
+  const { setValue, control } = useFormContext()
 
   return (
     <Controller

@@ -27,6 +27,6 @@ export const useValidationSchema = ({
       .required(t("validation.required"))
       .min(minMonths, t("validation.min", { val: minMonths }))
       .max(maxMonths, t("validation.max", { val: maxAmount })),
-    insuranceIncluded: Yup.boolean(),
+    insuranceIncluded: Yup.boolean().required(),
   });
 };

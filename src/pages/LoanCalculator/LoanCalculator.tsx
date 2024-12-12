@@ -1,19 +1,21 @@
 import styles from "./loanCalculator.module.css";
-import { Button, Card, Typography } from "@mui/joy";
+import { Card, Typography } from "@mui/joy";
 import { useTranslation } from "react-i18next";
-import { values } from "../../assets/values";
+import { loanValues } from "../../assets/values";
 import LoanSlider from "../../components/LoanSlider/LoanSlider";
 import NumberInput from "../../components/NumberInput/NumberInput";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useValidationSchema } from "./validationSchema";
 import DualCheckbox from "../../components/LoanInsurance/LoanInsurance";
-import PhoneIcon from "../../components/Icons/Phone";
+import PriceCard from "../../components/PriceCard/PriceCard";
+import Declaimer from "../../components/Declaimer/Declaimer";
+import { useLoanData } from "../../utils/useLoanData";
 
 export default function LoanCalculator() {
   const { t } = useTranslation();
-  const { loan } = values;
-  const validationSchema = useValidationSchema({ ...loan });
+  const { minAmount, maxAmount, maxMonths, minMonths } = loanValues;
+  const validationSchema = useValidationSchema({ ...loanValues });
 
   const methods = useForm({
     mode: "onChange",
@@ -24,10 +26,12 @@ export default function LoanCalculator() {
     },
     resolver: yupResolver(validationSchema),
   });
+  const formValues = methods.watch();
+  const { data, isSuccess, isPending } = useLoanData(formValues);
 
   return (
-    <Card>
-      <FormProvider {...methods}>
+    <FormProvider {...methods}>
+      <Card>
         <form>
           <div className={styles.container}>
             <div className={styles.controlsContainer}>
@@ -35,8 +39,8 @@ export default function LoanCalculator() {
               <div className={styles.inputContainer}>
                 <LoanSlider
                   name="amount"
-                  min={loan.minAmount}
-                  max={loan.maxAmount}
+                  min={minAmount}
+                  max={maxAmount}
                   title={t("howMuch")}
                   unit={t("currency")}
                 />
@@ -45,8 +49,8 @@ export default function LoanCalculator() {
               <div className={styles.inputContainer}>
                 <LoanSlider
                   name="months"
-                  min={loan.minMonths}
-                  max={loan.maxMonths}
+                  min={minMonths}
+                  max={maxMonths}
                   title={t("howLong")}
                   unit={t("months")}
                 />
@@ -58,48 +62,20 @@ export default function LoanCalculator() {
                 firstLabel={t("withInsurance")}
                 secondLabel={t("withoutInsurance")}
               />
+              <Declaimer
+                isSuccess={isSuccess}
+                isPending={isPending}
+                totalPayment={data?.totalPayment ?? 22258}
+              />
             </div>
-            <div className={styles.priceContainer}>
-              <div className={styles.innerPriceContainer}>
-                <Typography
-                  sx={{ color: "white", fontWeight: "bold" }}
-                  level="h4"
-                >
-                  {t("monthlyPayments")}
-                </Typography>
-                <Typography
-                  sx={{ color: "white", fontWeight: "bold" }}
-                  level="h1"
-                >
-                  {`${t("currency")}`}
-                </Typography>
-              </div>
-              <div className={styles.innerPriceContainer}>
-                <Button
-                  size="lg"
-                  sx={{
-                    backgroundColor: "#3FB360",
-                    color: "white",
-                    textDecoration: "underline",
-                    borderRadius: 4,
-                  }}
-                >
-                  {t("continue")}
-                </Button>
-                <div className={styles.rowContainer}>
-                  <PhoneIcon />
-                  <Typography
-                    level="body-xs"
-                    sx={{ color: "white", textDecoration: "underline" }}
-                  >
-                    {t("orWeCall")}
-                  </Typography>
-                </div>
-              </div>
-            </div>
+            <PriceCard
+              isSuccess={isSuccess}
+              isPending={isPending}
+              monthlyPayment={data?.monthlyPayment ?? 927}
+            />
           </div>
         </form>
-      </FormProvider>
-    </Card>
+      </Card>
+    </FormProvider>
   );
 }
